@@ -54,18 +54,18 @@ module.exports = function (grunt) {
         imagemin: {
             dynamic: {
                 files: [{
-                    expand: true,                  // Enable dynamic expansion
-					dot: true,                    // Allow files to start with a dot
-                    cwd: './',                   // Src matches are relative to this path
+                    expand: true,                   // Enable dynamic expansion
+					dot: true,                      // Allow files to start with a dot
+                    cwd: './',                      // Src matches are relative to this path
                     src: ['img/*.{png,jpg,gif}'],   // Actual patterns to match
-                    dest: 'dist/'                  // Destination path prefix
+                    dest: 'dist/'                   // Destination path prefix
                 }]
             }
         },	
         useminPrepare: {
             foo: {
                 dest: 'dist',
-                src: ['contactus.html','aboutus.html','index.html']
+                src: ['contactus.html','aboutus.html','index.html','donate.html']
             },
             options: {
                 flow: {
@@ -133,7 +133,7 @@ module.exports = function (grunt) {
         // options.assetDirs contains the directories for finding the assets
         // according to their relative paths
         usemin: {
-            html: ['dist/contactus.html','dist/aboutus.html','dist/index.html'],
+            html: ['dist/contactus.html','dist/aboutus.html','dist/index.html','dist/donate.html'],
             options: {
                 assetsDirs: ['dist', 'dist/css','dist/js']
             }
@@ -148,6 +148,7 @@ module.exports = function (grunt) {
                     'dist/index.html': 'dist/index.html',  // 'destination': 'source'
                     'dist/contactus.html': 'dist/contactus.html',
                     'dist/aboutus.html': 'dist/aboutus.html',
+					'dist/donate.html': 'dist/donate.html',
                 }
             }
         },
@@ -159,7 +160,7 @@ module.exports = function (grunt) {
 			dev: {
 				bsFiles: {
 					src: [
-						'.css/*.css',
+						'css/*.css',
 						'*.html',
 						'js/*.js'
 					]

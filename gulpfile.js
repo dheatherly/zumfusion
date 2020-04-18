@@ -24,18 +24,17 @@ gulp.task('sass:watch', function () {
     
 gulp.task('browser-sync', function () {
     var files = [
-    './*.html',
-    './css/*.css',
-    './img/*.{png,jpg,gif}',
-    './js/*.js'
+		'./*.html',
+		'./css/*.css',
+		'./img/*.{png,jpg,gif}',
+		'./js/*.js'
     ];
 
     browserSync.init(files, {
-    server: {
-        baseDir: "./"
-    }
+		server: {
+			baseDir: "./"
+		}
     });
-
 });
 
 // Clean
@@ -44,8 +43,8 @@ gulp.task('clean', function() {
 });
 
 gulp.task('copyfonts', function() {
-   return gulp.src('./node_modules/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
-   .pipe(gulp.dest('./dist/fonts'));
+	return gulp.src('./node_modules/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
+	  .pipe(gulp.dest('./dist/fonts'));
 });
 
 // Images
@@ -57,14 +56,14 @@ gulp.task('imagemin', function() {
 
 gulp.task('usemin', function() {
     return gulp.src('./*.html')
-    .pipe(flatmap(function(stream, file){
-        return stream
-          .pipe(usemin({
-              css: [ rev() ],
-              html: [ function() { return htmlmin({ collapseWhitespace: true })} ],
-              js: [ uglify(), rev() ],
-              inlinejs: [ uglify() ],
-              inlinecss: [ cleanCss(), 'concat' ]
+		.pipe(flatmap(function(stream, file){
+			return stream
+			  .pipe(usemin({
+				  css: [ rev() ],
+				  html: [ function() { return htmlmin({ collapseWhitespace: true })} ],
+				  js: [ uglify(), rev() ],
+				  inlinejs: [ uglify() ],
+				  inlinecss: [ cleanCss(), 'concat' ]
           }))
       }))
       .pipe(gulp.dest('dist/'));
